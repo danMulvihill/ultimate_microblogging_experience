@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h2>Create Post</h1>
+<%= link_to 'New Post', new_post_path %>
+
+
+<h2>Other posts</h2>
+
+    <% @posts.reverse.each do |post| %>
+      <div class="post-content">
+        <h3><%= post.content %></h3>
+        <div>
+          <span>
+            posted by: <%= post.user_id %> on <%= post.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+          </span>
+          <!--<span><%= link_to 'Details', post %></span>-->
+          <span>
+            <span class="inner-form"><%= link_to 'Edit', edit_post_path(post), class: "send edit" %></span>
+            <span class="ineer-form"><%= link_to 'Delete', post, method: :delete, class: "send del" %></span>
+          </span>
+        </div>
+      </div>
+    <% end %>
+
+
+
+
+

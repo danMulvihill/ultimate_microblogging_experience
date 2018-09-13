@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookface</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>   
+    <nav class="top-nav">
+        <h2><span>b</span></h2>
+        <div class="right-content">
+            <div class="mobile-menu">
+                <p class="mobile-menu_open">Menu</p>
+                <p class="mobile-menu_close">X</p>
+            </div>
+            <ul>
+                <li><a href="/">Welcome</a></li> 
+                <li><a href="/users/new">Join Us</a></li>
+                <li><a href="/signin">Log In/Out</a></li>
+                <li><a href="/posts">Blog</a></li>
+                   
+            </ul>
+        </div>
+
+    </nav> 
+    <div class="flash">
+
+        <div class='notice'>
+            <%= flash[:notice] if flash[:notice] %>
+        </div>
+        <div class='error'>
+            <%= flash[:error] if flash[:error] %>
+        </div>
+        <div class='success'>
+            <%= flash[:success] if flash[:success] %>
+        </div>
+        
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <footer></footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  </body>
+</html>
