@@ -44,6 +44,7 @@ class UsersController < ApplicationController
   # DELETE /users/id
   def destroy
     @user = User.find(params[:id])
+    Post.find(@user.id.to_i).destroy
     @user.destroy
     redirect_to users_url, notice: 'User deleted.' 
   end

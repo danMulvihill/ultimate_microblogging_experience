@@ -1,11 +1,16 @@
 <p id="notice"><%= notice %></p>
+<h2>Your info:</h2>
 <div>
-  <p><strong>Fname:</strong><%= @user.fname %></p>
-  <p><strong>Lname:</strong><%= @user.lname %></p>
-  <p><strong>Password:</strong><%= @user.password %></p>
-  <p><strong>Email:</strong><%= @user.email %></p>
+  <p><strong>Fname: </strong> <%= @user.fname %></p>
+  <p><strong>Lname: </strong> <%= @user.lname %></p>
+  <p><strong>Password: </strong> <%= @user.password %></p>
+  <p><strong>Email:</strong> <%= @user.email %></p>
 </div>
-
+<span>
+    <%= link_to 'Edit Info', edit_user_path(@user), class: "send edit" %>
+    <%= link_to 'Delete Info', @user, class: "send del", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to "Now log in", login_path%>
+</span>
 <div>
 
 </div>

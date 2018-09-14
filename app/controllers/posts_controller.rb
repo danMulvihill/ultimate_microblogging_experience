@@ -5,15 +5,16 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all
+    # @user = User.find(session[:user_id])
   end
 
 
   # POST /posts
   def create
     @post = Post.new(post_params) #
-
+    @user = User.find(session[:user_id])
       if @post.save
-        redirect_to @post, notice: 'Post created.'
+        redirect_to posts_path, notice: 'Post created.'
       else
         render :new 
       end
@@ -22,18 +23,21 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @user = User.find(session[:user_id])
+    
   end
 
   # GET /posts/id
   def show
     @post = Post.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   # PUT /posts/id
   def update
       @post = Post.find(params[:id])
       if @post.update(post_params) #
-        redirect_to @post, notice: 'Post updated.' 
+        redirect_to posts_path, notice: 'Post updated.' 
       else
         render :edit 
       end

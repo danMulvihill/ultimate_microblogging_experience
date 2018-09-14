@@ -1,21 +1,22 @@
-<h1>New Post</h1>
+<h1>Alright, <%= @user.fname %>...</h1>
 
+<p>What do you have to say?<p>
 <%= form_for @post do |form| %>
-
+   
 
   <div class="field">
-    <%= form.label :content %>
+
     <%= form.text_area :content %>
   </div>
-
+  
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    
+    <%= form.hidden_field :user_id, value: @user.id.to_i %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit Post", class: "send" %>
   </div>
 <% end %>
 
-<%= link_to 'List', posts_path %>
+<%= link_to 'Return to Posts', posts_path %>

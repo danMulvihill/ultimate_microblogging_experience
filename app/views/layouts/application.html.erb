@@ -6,8 +6,7 @@
     <%= csp_meta_tag %>
   
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+   </head>
 
   <body>   
     <nav class="top-nav">
@@ -18,15 +17,23 @@
                 <p class="mobile-menu_close">X</p>
             </div>
             <ul>
+                
+                <% if !session[:user_id] %>
                 <li><a href="/">Welcome</a></li> 
                 <li><a href="/users/new">Join Us</a></li>
-                <li><a href="/login">Log In/Out</a></li>
+                <li><a href="/login">Log In</a></li>
+                <% else %>
+                <li><a href="/login">Log Out</a></li>
                 <li><a href="/posts">Blog</a></li>
+                <% end %>
+                
                    
             </ul>
         </div>
 
     </nav> 
+
+    
     <div class="flash">
 
         <div class='notice'>
@@ -45,5 +52,7 @@
     </div>
     <footer></footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
   </body>
 </html>
