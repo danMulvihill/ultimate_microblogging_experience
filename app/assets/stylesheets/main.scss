@@ -11,6 +11,7 @@
     line-height: 1.2;
     font-size: 22px;
     font-family: "Helvetica Neue", "Roboto", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+    background-color:  rgb(233, 220, 214);
     
 }
 
@@ -249,6 +250,7 @@ input{
     padding: 3px;
     margin-top: 15px;
     width: 80%;
+    text-align: center;
     // display:block;
     color: burlywood;
     background: rgb(14, 14, 105);
@@ -263,7 +265,8 @@ input{
     border:none;
     font-size: 1rem;
     width: 80px;
-    
+    margin-right: 8px;
+    margin-bottom: 4px;
     background: blue;
     color: white;
 }
@@ -307,6 +310,7 @@ input{
     border-radius: 10px;
     margin-top: 25px;
 
+
     div{
         background-color: burlywood;
         padding-left: 15px;
@@ -324,7 +328,7 @@ input{
 }
 
 .post-meta{
-    font-size: 0.9em;
+    font-size: 0.8em;
     display: flex;
     justify-content: space-between;
 }

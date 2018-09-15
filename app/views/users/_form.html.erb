@@ -3,22 +3,22 @@
 
   <div class="field">
     <%= form.label :fname %>
-    <%= form.text_field :fname %>
+    <%= form.text_field :fname, required: "required" %>
   </div>
 
   <div class="field">
     <%= form.label :lname %>
-    <%= form.text_field :lname %>
+    <%= form.text_field :lname, required: "required" %>
   </div>
 
   <div class="field">
     <%= form.label :password %>
-    <%= form.text_field :password %>
+    <%= form.password_field :password, required: "required" %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, required: "required" %>
   </div>
 
   <div class="actions">

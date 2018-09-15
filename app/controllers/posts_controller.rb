@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Post deleted"
-    redirect_to posts_url
+    redirect_to posts_path
   end
 
   # GET /posts/id/edit

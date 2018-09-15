@@ -44,15 +44,16 @@ class UsersController < ApplicationController
 
   # DELETE /users/id
   def destroy
+    Com.where(user_id: session[:user_id]).destroy_all
+    Post.where( user_id: session[:user_id]).destroy_all
     @user = User.find(params[:id])
-    Post.find(@user.id.to_i).destroy
+    session[:user_id] = nil
     @user.destroy
-    flash[:notice] = "Account deleted. You'll be missed"
-    redirect_to users_url
+    flash[:success] = "Account deleted. You'll be missed"
+    redirect_to '/'
   end
 
   private 
-  
     def user_params  #strong params 
       params.require(:user).permit(:fname, :lname, :password, :email)
     end
