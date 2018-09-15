@@ -39,7 +39,7 @@ class ComsController < ApplicationController
       redirect_to posts_path 
     else
       flash[:error] = "Something went wrong"
-      render :new
+      redirect_to posts_path
     end
   end
 
@@ -51,7 +51,7 @@ class ComsController < ApplicationController
       redirect_to posts_path
     else
       flash[:error] = "Something went wrong"
-      render :edit
+      redirect_to posts_path
     end
   end
 

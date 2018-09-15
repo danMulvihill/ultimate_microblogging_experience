@@ -2,9 +2,10 @@
 <h2>Posts</h2>
 
 <% if session[:user_id] %>
-<h3 class="inner-form">
-  <%= link_to 'Click here to add to the conversion', new_post_path, class: "send big" %>
-</h3>
+ 
+<button class="send big">
+  <%= link_to 'Click here to add a post', new_post_path %>
+</button>
 <% else%>
 <h2><%= link_to "Join us", new_user_path %> to participate</h2>
 <% end %>
@@ -14,15 +15,16 @@
     <% @posts.reverse.each do |post| %>
       <div class="post-content">
         <h3><%= post.content %></h3>
-        <div>
-          <span class="post-meta">
+        <div class="post-meta">
+          <span>
             posted by: <%= User.find(post.user_id).fname %> 
                 <%= User.find(post.user_id).lname %>
                 <br>on <%= post.created_at.strftime("%B %e, %Y at %I:%M %p") %>
           </span>
-          <span>
+          <% if session[:user_id] %>
+          <span class="controls">
             <!--<span><%= link_to 'Details', post %></span>-->
-              <form class="iner-form" method="GET" action="/coms/new">
+              <form class="inner-form" method="GET" action="/coms/new">
                   <input type="hidden" name="pid" value='<%= "#{post.id}" %>'>
                    <input class="send com" type="submit" value="comment">
                   <!--<%= link_to 'Comments', coms_path, class: "send com" %>-->
@@ -31,7 +33,7 @@
                     <span class="inner-form"><%= link_to 'X', post, method: :delete, class: "send del" %></span>
                  <% end %>
               </form>
-
+            <% end%>
           </span>
         </div>
       </div>
@@ -51,7 +53,7 @@
                         <% if session[:user_id] == User.find(com.user_id).id %>
                         <div>
                           <%= link_to 'Edit', edit_com_path(com), class: "send edit" %>
-                          <%= link_to 'Delete', com, method: :delete, class: "send del" %>
+                          <%= link_to 'X', com, method: :delete, class: "send del" %>
                         </div>
                         <% end %>
                       </div>

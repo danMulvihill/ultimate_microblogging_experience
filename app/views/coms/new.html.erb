@@ -1,5 +1,25 @@
 <h1>Add a Comment</h1>
 
-<%= render 'form', com: @com %>
 
+<%= form_for @com do |form| %>
+
+  <div class="field">
+    
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    
+    <%= form.hidden_field :post_id, value: params[:pid] %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :user_id, value: session[:user_id] %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit "Submit comment", class: "send" %>
+  </div>
+<% end %>
 
