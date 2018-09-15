@@ -1,10 +1,12 @@
 <p style="float:right"><%= link_to "See all users", users_path%></p>
-<h2>Chats</h2>
+<h2>Posts</h2>
 
 <% if session[:user_id] %>
-<h1>
-  <%= link_to 'Click here to add to the conversion', new_post_path %>
-</h1>
+<h3 class="inner-form">
+  <%= link_to 'Click here to add to the conversion', new_post_path, class: "send big" %>
+</h3>
+<% else%>
+<h2><%= link_to "Join us", new_user_path %> to participate</h2>
 <% end %>
 <br>
 <h3>What everyone has to say:</h3>
@@ -13,21 +15,50 @@
       <div class="post-content">
         <h3><%= post.content %></h3>
         <div>
-          <span>
+          <span class="post-meta">
             posted by: <%= User.find(post.user_id).fname %> 
                 <%= User.find(post.user_id).lname %>
-                on <%= post.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+                <br>on <%= post.created_at.strftime("%B %e, %Y at %I:%M %p") %>
           </span>
-          <!--<span><%= link_to 'Details', post %></span>-->
-          
-          <% if session[:user_id] == post.user_id %>
           <span>
-            <span class="inner-form"><%= link_to 'Edit', edit_post_path(post), class: "send edit" %></span>
-            <span class="ineer-form"><%= link_to 'X', post, method: :delete, class: "send del" %></span>
+            <!--<span><%= link_to 'Details', post %></span>-->
+              <form class="iner-form" method="GET" action="/coms/new">
+                  <input type="hidden" name="pid" value='<%= "#{post.id}" %>'>
+                   <input class="send com" type="submit" value="comment">
+                  <!--<%= link_to 'Comments', coms_path, class: "send com" %>-->
+                 <% if session[:user_id] == post.user_id %>
+                    <span class="inner-form"><%= link_to 'Edit', edit_post_path(post), class: "send edit" %></span>
+                    <span class="inner-form"><%= link_to 'X', post, method: :delete, class: "send del" %></span>
+                 <% end %>
+              </form>
+
           </span>
-          <% end %>
         </div>
       </div>
+
+                  
+                  <% @coms.reverse.each do |com| %>
+                    
+                    <% if post.id.to_i == com.post_id.to_i %>
+                    <div class="comment">  
+                      <p><%= com.content %></p>
+                      <div class="comment-meta">
+                       <div>
+                        <p>Comment from: <%= User.find(com.user_id).fname %> <%= User.find(com.user_id).lname %>
+                        on <%= User.find(com.user_id).created_at.strftime("%B %e, %Y at %I:%M %p") %>
+                        </p>
+                       </div>
+                        <% if session[:user_id] == User.find(com.user_id).id %>
+                        <div>
+                          <%= link_to 'Edit', edit_com_path(com), class: "send edit" %>
+                          <%= link_to 'Delete', com, method: :delete, class: "send del" %>
+                        </div>
+                        <% end %>
+                      </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+
     <% end %>
 
 

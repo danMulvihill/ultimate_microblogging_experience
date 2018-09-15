@@ -17,15 +17,17 @@
                 <p class="mobile-menu_close">X</p>
             </div>
             <ul>
-                
-                <% if !session[:user_id] %>
                 <li><a href="/">Welcome</a></li> 
-                <li><a href="/users/new">Join Us</a></li>
+                <% if !session[:user_id] %>
+                <li><%= link_to "About", about_path %></li>
+                <li><%= link_to "Join Us", new_user_path %></li>
                 <li><a href="/login">Log In</a></li>
                 <% else %>
                 <li><a href="/login">Log Out</a></li>
                 <li><a href="/posts">Blog</a></li>
+                
                 <% end %>
+                
                 
                    
             </ul>

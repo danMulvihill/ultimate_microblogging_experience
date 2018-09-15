@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   
+  resources :coms
+  get 'about' => 'about#index'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   resources :comments
 
   root 'welcome#index'
+
   
 end
 

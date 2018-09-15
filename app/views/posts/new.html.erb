@@ -1,6 +1,12 @@
 <h1>Alright, <%= @user.fname %>...</h1>
 
 <p>What do you have to say?<p>
+
+<%= render "form", post: @post %>
+
+
+<!-- delete if works
+
 <%= form_for @post do |form| %>
    
 

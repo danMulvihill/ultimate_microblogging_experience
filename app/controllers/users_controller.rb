@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params) #replaces params[:user]
       if @user.save
-          flash[:notice] = "User created"
+          flash[:notice] = "Profie created. Welcome"
           redirect_to @user 
       else
           render :new 
@@ -35,7 +35,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
       if @user.update(user_params)
-        redirect_to @user, notice: 'User updated.'
+        flash[:notice] = "Info updated"
+        redirect_to @user
       else
         render :edit
       end
@@ -46,10 +47,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     Post.find(@user.id.to_i).destroy
     @user.destroy
-    redirect_to users_url, notice: 'User deleted.' 
+    flash[:notice] = "Account deleted. You'll be missed"
+    redirect_to users_url
   end
 
-  private
+  private 
+  
     def user_params  #strong params 
       params.require(:user).permit(:fname, :lname, :password, :email)
     end

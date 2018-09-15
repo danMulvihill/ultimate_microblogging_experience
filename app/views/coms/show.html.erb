@@ -1,0 +1,19 @@
+<p>Your comment:</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @com.content %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @com.post_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @com.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_com_path(@com) %> |
+<%= link_to 'Back', coms_path %>

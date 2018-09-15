@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
-  #automatically calls set_post
-  # before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /posts
   def index
     @posts = Post.all
     # @user = User.find(session[:user_id])
+    @coms = Com.all
   end
 
 
@@ -14,7 +13,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params) #
     @user = User.find(session[:user_id])
       if @post.save
-        redirect_to posts_path, notice: 'Post created.'
+        flash[:notice] = "Posted!"
+        redirect_to posts_path
       else
         render :new 
       end
@@ -31,13 +31,15 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = User.find(session[:user_id])
+    @com= Com.find(1)
   end
 
   # PUT /posts/id
   def update
       @post = Post.find(params[:id])
       if @post.update(post_params) #
-        redirect_to posts_path, notice: 'Post updated.' 
+        flash[:notice] = "Post updated"
+        redirect_to posts_path
       else
         render :edit 
       end
@@ -47,19 +49,17 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_url, notice: 'Post deleted.' 
+    flash[:notice] = "Post deleted"
+    redirect_to posts_url
   end
 
   # GET /posts/id/edit
   def edit
     @post = Post.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   private
-    #calls post.find method to retrieve post with an id corr. to parameter passed to controller
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
     #params
     def post_params

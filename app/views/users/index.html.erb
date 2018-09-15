@@ -3,7 +3,7 @@
 <h1>User List</h1>
   <table class="table table-striped">
   <tr><th>Users</th><th>Date Joined</th></tr>
-    <% @users.each do |user| %>
+    <% @users.reverse.each do |user| %>
       <tr>
         <td><%= user.fname %> <%= user.lname %>  
         <% if session[:user_id] == user.id %>
