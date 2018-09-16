@@ -17,13 +17,15 @@
 <h3>What everyone has to say:</h3>
   <% @posts.reverse.each do |post| %>
   <div class="post-content">
-    <h3><%= post.content %></h3>
-    <span class="controls">
+   <div>
+    <h2><%= post.content %></h2>
+    <div class="controls">
       <% if session[:user_id] == post.user_id %>
         <span class="inner-form"><%= link_to 'Edit', edit_post_path(post), class: "send edit" %></span>
         <span class="inner-form"><%= link_to 'X', post, method: :delete, class: "send del" %></span>
       <% end %>
-    </span>
+    </div>
+    </div>
     <div class="post-meta">
       <span>
         posted by: 

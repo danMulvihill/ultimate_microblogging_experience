@@ -25,7 +25,7 @@ p{
 }
 
 h1, h2, h3, h4{
-    margin-top: 0;
+    margin-top: 5px;
     padding-left: 10px;
     color: #4a5aba
 }
@@ -333,7 +333,7 @@ input{
     margin: 0 !important;
 }
 
-.post-meta{
+.post-content div, .post-meta{
     font-size: 0.8em;
     display: flex;
     justify-content: space-between;
