@@ -15,7 +15,7 @@
 
   <body>   
     <nav class="top-nav">
-        <h2><span>f</span></h2>
+        <h2><span><a href="/" id="hack">forum</a></span></h2>
         <div class="right-content">
             <div class="mobile-menu">
                 <p class="mobile-menu_open">Menu</p>
@@ -24,7 +24,7 @@
             <ul>
                  
                 <% if !session[:user_id] %>
-                <li><a href="/">Welcome</a></li>
+                
                 <li><%= link_to "About", about_path %></li>
                 <li><%= link_to "Join Us", new_user_path %></li>
                 <li><a href="/login">Log In</a></li>
