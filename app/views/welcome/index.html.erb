@@ -1,13 +1,16 @@
 
 <div class="row">
     <div class="col">
-        <h1>forum</h1>
+        <h3>a micro-blogging experience</h3>
     </div>
     <div class="col">
         <p>
-          a micro-blogging experience
+          <% if !session[:user_id] %>
             <br>See the <a href="posts">read-only version</a> or <a href="users/new">sign up</a> to join.
             <br><a href="/login">Login</a> if you are already a member
+         <% else %>
+            Go to the <a href="posts">posts</a>
+         <% end %>
         </p>
     </div>
 </div>
