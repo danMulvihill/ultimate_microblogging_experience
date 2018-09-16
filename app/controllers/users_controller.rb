@@ -9,9 +9,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params) #replaces params[:user]
       if @user.save
-          flash[:notice] = "Profie created. Welcome"
-          redirect_to @user 
+          flash[:success] = "Profie created. Now log in"
+          redirect_to "/login"
       else
+          flash[:error] ="Something went wrohg"
           render :new 
       end
   end
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
         flash[:notice] = "Info updated"
         redirect_to @user
       else
+        flash[:error] = "something went wrong"
         render :edit
       end
   end
@@ -49,7 +51,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     session[:user_id] = nil
     @user.destroy
-    flash[:success] = "Account deleted. You'll be missed"
+    flash[:error] = "Account deleted. You'll be missed"
     redirect_to '/'
   end
 

@@ -25,6 +25,8 @@ p{
 }
 
 h1, h2, h3, h4{
+    margin-top: 0;
+    padding-left: 10px;
     color: #4a5aba
 }
 
@@ -44,8 +46,8 @@ ul{
     padding: 20px;
 }
 p img{
-   float: left;
    padding: 5px;
+   width: 100%;
 }
 .deals{
     display: flex;
@@ -54,6 +56,10 @@ p img{
 
 .deal-img{
     width: 100%;
+}
+
+.center{
+    text-align:center
 }
 
 
@@ -146,7 +152,7 @@ p img{
 /* top */
 
 .container{
-    margin: 55px auto 0;
+    margin: 0 auto;
     clear:right;
     
 }
@@ -337,15 +343,14 @@ input{
 .comment{
     margin-top: 10px;
     padding: 5px; 
-   
-
     background: #6a72a6;
     color: white;
-    margin-left: 30%;
+    margin-left: 5%;
+    margin-right:5%;
     border-radius: 30px;
 }
 .comment-meta{
-    font-size: 0.7em;
+    font-size: 0.5em;
     padding-left: 10px;
     background: burlywood;
     color:black;
@@ -382,6 +387,7 @@ footer a{
     margin-top: 60px;
     color: white;
     text-align: center;
+    padding: 11px;
 }
 
 .success {
@@ -396,7 +402,7 @@ footer a{
     background-color:green;
 }
 
-img{
+.img-fill img{
     width: 100%;
     
 }
@@ -405,33 +411,29 @@ img{
     font-size: 3rem;
 }
 
+.row{
+    display:block;
+}
+
 @media all and (min-width: 600px){
     .container{
-        /* background: black; */
         padding: 8px;
-        max-width: 1200px;
-        /* margin: 35px auto 0; */
-        clear: right;
+        max-width: 1200px;  
     }
     header{
         padding: 0 15px;
     }
-
     header h4{
         display:block;
     }
-
     input{
         width: 90%;
     }
-
-   
 
     /* This is for full display of nav */
 
     .index .top-nav ul{
         display:flex;
-
     }
 
     .top-nav ul{
@@ -451,7 +453,6 @@ img{
         padding: 10px;
     }
 
-
     .mobile-menu{
         display:none;
     }
@@ -464,7 +465,18 @@ img{
         flex-wrap:wrap;
     }
 
-   
+    .col{
+        width: 50%;
+    }
+
+    .comment{
+        margin-left: 30%;
+        margin-right: 5%;
+        font-size: 1em;
+    }
+    .commet-meta{
+        font-size: 0.7em;
+    }
 
 }
 

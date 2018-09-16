@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params) #
     @user = User.find(session[:user_id])
       if @post.save
-        flash[:notice] = "Posted!"
+        flash[:success] = "Posted!"
         redirect_to posts_path
       else
         render :new 
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:notice] = "Post deleted"
+    flash[:error] = "Post deleted"
     redirect_to posts_path
   end
 

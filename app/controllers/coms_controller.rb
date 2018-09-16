@@ -35,7 +35,7 @@ class ComsController < ApplicationController
     @user = User.find(session[:user_id])
     # @post = Post.find(params[:post_id])
     if @com.save
-      flash[:notice] = "Comment posted"
+      flash[:success] = "Comment posted"
       redirect_to posts_path 
     else
       flash[:error] = "Something went wrong"
@@ -45,7 +45,7 @@ class ComsController < ApplicationController
 
   # PUT /coms/id
   def update
-    @com = Com.new(com_params)
+    @com = Com.find(params[:id])
     if @com.update(com_params)
       flash[:notice] = "Comment edited"
       redirect_to posts_path
@@ -58,7 +58,7 @@ class ComsController < ApplicationController
   # DELETE /coms/id
   def destroy
     @com.destroy
-    flash[:notice] = "Comment deleted"
+    flash[:error] = "Comment deleted"
     redirect_to posts_path
   end
 

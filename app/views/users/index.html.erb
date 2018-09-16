@@ -1,6 +1,10 @@
 
+<div class="container">
 
-<h1>User List</h1>
+<p class="img-fill">
+<%= image_tag("comm-ban2.jpg", :alt => "community") %>
+</p>
+<h3>User List</h3>
   <table class="table table-striped">
   <tr><th>Users</th><th>Date Joined</th></tr>
     <% @users.reverse.each do |user| %>
@@ -9,7 +13,7 @@
         <% if session[:user_id] == user.id %>
           <span>
               <%= link_to 'Edit', edit_user_path(user), class: "send edit" %>
-               <%= link_to 'X', user, class: "send del", method: :delete, data: { confirm: 'Are you sure?' } %>
+               <%= link_to 'X', user, class: "send del", method: :delete, data: { confirm: 'Are you sure you want to leave? All of your info, posts, and comments will be gone forever!' } %>
           </span>
         <% end %>
           </td>
@@ -21,3 +25,4 @@
 
 <!--<%= link_to 'New User', new_user_path %>
 -->
+</div>

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       # authenticate(params[:password])
       session[:user_id] = @user.id
 
-      flash[:notice] = "#{@user.fname} logged in"
+      flash[:success] = "#{@user.fname} logged in"
       redirect_to '/posts'
     else
       flash[:error] = "Login failed"
