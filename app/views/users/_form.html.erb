@@ -2,24 +2,25 @@
 <%= form_for @user do |form| %>
 
   <div class="field">
-    <%= form.label :fname %>
+    <%= form.label(:fname, "First Name") %>
     <%= form.text_field :fname, required: "required" %>
   </div>
 
   <div class="field">
-    <%= form.label :lname %>
+    <%= form.label(:lname, "Last Name") %>
     <%= form.text_field :lname, required: "required" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password, required: "required" %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
     <%= form.text_field :email, required: "required" %>
   </div>
+  
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, required: "required" %>
+  </div>
+
 
   <div class="actions">
     <%= form.submit "Edit info", class: "send" %>
