@@ -7,6 +7,11 @@ class PostsController < ApplicationController
     @coms = Com.all
   end
 
+  # GET /posts/new (the form)
+  def new
+    @post = Post.new
+    @user = User.find(session[:user_id])
+  end
 
   # POST /posts
   def create
@@ -20,18 +25,17 @@ class PostsController < ApplicationController
       end
   end
 
-  # GET /posts/new
-  def new
-    @post = Post.new
-    @user = User.find(session[:user_id])
-    
-  end
-
   # GET /posts/id
   def show
     @post = Post.find(params[:id])
     @user = User.find(session[:user_id])
     @com= Com.find(1)
+  end
+
+  # GET /posts/id/edit (the form)
+  def edit
+    @post = Post.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   # PUT /posts/id
@@ -53,11 +57,7 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  # GET /posts/id/edit
-  def edit
-    @post = Post.find(params[:id])
-    @user = User.find(session[:user_id])
-  end
+
 
   private
 

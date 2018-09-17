@@ -8,32 +8,19 @@ class ComsController < ApplicationController
     @post = Post.all
   end
 
-  # GET /coms/id
-  def show
-    @user = User.find(session[:user_id])
-    # @post = Post.find(params[:post_id])
-  end
+    # GET /coms/new (form)
+    def new
+      puts params.inspect
+      @com =Com.new
+      # @com = Com.new(post_id: params[:post_id])
+      @user = User.find(session[:user_id])
+      @postId = params[:pid]
+    end
 
-  # GET /coms/new
-  def new
-    puts params.inspect
-    @com =Com.new
-    # @com = Com.new(post_id: params[:post_id])
-    @user = User.find(session[:user_id])
-    @postId = params[:pid]
-  end
-
-  # GET /coms/id/edit
-  def edit
-    @user = User.find(session[:user_id])
-    # @post = Post.find(params[:post_id])
-  end
-
-  # POST /coms
-  def create
+   # POST /coms
+   def create
     @com = Com.new(com_params)
     @user = User.find(session[:user_id])
-    # @post = Post.find(params[:post_id])
     if @com.save
       flash[:success] = "Comment posted"
       redirect_to posts_path 
@@ -43,6 +30,20 @@ class ComsController < ApplicationController
     end
   end
 
+
+  # GET /coms/id
+  def show
+    @user = User.find(session[:user_id])
+  end
+
+
+
+  # GET /coms/id/edit (form)
+  def edit
+    @user = User.find(session[:user_id])
+  end
+
+ 
   # PUT /coms/id
   def update
     @com = Com.find(params[:id])
