@@ -152,7 +152,7 @@ p img{
 }
 
 .mobile-menu{
-
+    font-size: 1.2em;
 }
 
 .mobile-menu_close{
@@ -425,6 +425,16 @@ footer a{
     display:block;
 }
 
+.col p{
+    padding-right: 15px;
+}
+
+.col-2{
+    text-align:center; 
+    margin-top: 10px; 
+    margin-bottom: 10px
+}
+
 @media all and (min-width: 600px){
     .container{
         padding: 8px;
@@ -479,6 +489,11 @@ footer a{
         width: 50%;
     }
 
+    .col-2 img{
+        width:100%;
+        max-width: 300px;
+    }
+
     .comment{
         margin-left: 30%;
         margin-right: 5%;
@@ -491,10 +506,16 @@ footer a{
 }
 
 
-@media (min-width: 1000px){
+@media (min-width: 900px){
     form{
         width: 100%;
     }
+    .col-2 img{
+        width: 100%;
+        max-width: 1200px
+    }
+
+
 
 
 }

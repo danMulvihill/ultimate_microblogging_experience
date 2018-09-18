@@ -17,7 +17,8 @@ class UsersController < ApplicationController
           flash[:success] = "Profie created. Now log in"
           redirect_to "/login"
       else
-          flash[:error] ="Something went wrohg"
+          # flash[:error] ="Something went wrong"
+          flash[:error] = @user.errors.full_messages.join(', ')
           render :new 
       end
   end
@@ -39,8 +40,11 @@ class UsersController < ApplicationController
         flash[:notice] = "Info updated"
         redirect_to users_path
       else
-        flash[:error] = "something went wrong"
+        # flash[:error] = "something went wrong"
+        flash[:error] = user.errors.full_messages.join(", ")
         render :edit
+        #redirect_to edit_user_path(user)
+        #redirect_to_back(fallback_url: "")
       end
   end
 
